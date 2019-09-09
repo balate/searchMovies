@@ -1,4 +1,9 @@
 import React, {Component} from 'react'
+import {KEYOMDBI} from './../keys/keyOmdbi'
+
+
+// acces with APIKEY 
+const API_KEY = KEYOMDBI.API_KEY
 
 export class SearchForm extends Component {
 
@@ -10,7 +15,13 @@ export class SearchForm extends Component {
     }
     _handleSubmit = (e) => {
         e.preventDefault()
-        alert(this.state.inputMovie)
+        const{ inputMovie } = this.state
+        
+        fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${inputMovie}`)
+        .then ( res => res.json())
+        .then ( results => {
+            console.log(results)
+        })
     }
     render(){
         return(
