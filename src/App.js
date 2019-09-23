@@ -1,9 +1,10 @@
 import React,{Component} from 'react';
 import {Title} from './components/Title';
 import {SearchForm} from './components/SearchForm';
+import {Movie} from './components/Movie';
 import './App.css';
 import 'bulma/css/bulma.css'
-import { setState } from 'expect/build/jestMatchersObject';
+
 
 
 class App extends Component {
@@ -17,7 +18,12 @@ class App extends Component {
   _renderResults = () =>{
     const {results} = this.state
     return results.map(movie => {
-      return <p key={movie.imdbID}>{movie.Title}</p>
+      return <Movie 
+        key={movie.imdbID}
+        title={movie.Title}
+        year = {movie.Year}
+        poster = {movie.Poster}
+        />
     })
   }
 
